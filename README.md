@@ -11,7 +11,12 @@ Terraform-webhosting-project aims to create a website using Terraform and Micros
 
 
 ### Initializing the project
-
+1. Install Terrafrom [here](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started)
+2. Download the terraform-webhosting-project files to your computer.
+3. Authenticate to Azure using the command in your terminal: 
+  ``` az login ```
+  A browser will open to authenticate your login details
+4. 
 
 ### Thought process
 
