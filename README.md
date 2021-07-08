@@ -7,7 +7,7 @@ Terraform-webhosting-project aims to create a website using Terraform and Micros
 
 [Thought process](#thought-process)
 
-[Microsoft Azure services used](microsoft-azure-services-used)
+[Microsoft Azure services used](#microsoft-azure-services-used)
 
 
 ### Initializing the project
