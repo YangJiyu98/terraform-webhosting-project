@@ -1,0 +1,1046 @@
+{
+    "properties": {
+      "lenses": {
+        "0": {
+          "order": 0,
+          "parts": {
+            "0": {
+              "position": {
+                "x": 0,
+                "y": 0,
+                "colSpan": 8,
+                "rowSpan": 1
+              },
+              "metadata": {
+                "inputs": [],
+                "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                "settings": {
+                  "content": {
+                    "settings": {
+                      "content": "<span style=\"color:darkblue;font-size: 28px;\">All Resources</span>\n",
+                      "title": "",
+                      "subtitle": "",
+                      "markdownSource": 1
+                    }
+                  }
+                }
+              }
+            },
+            "1": {
+              "position": {
+                "x": 0,
+                "y": 1,
+                "colSpan": 2,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "All Resource Count",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "// Count of all resources\r\ncount | project [\"All Resource count\"]=Count",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "b0ad56b7-050a-45aa-8599-8aadacf3e03f",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "2": {
+              "position": {
+                "x": 2,
+                "y": 1,
+                "colSpan": 7,
+                "rowSpan": 5
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Sum By Resource Type",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend tempType = split(type, \"/\")\r\n| extend FormattedType = strcat(tempType[0], \"/\", toupper(tempType[1]))\r\n| summarize RT = count() by FormattedType\r\n| project [\"Resource Type\"] = FormattedType, Count = RT",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "value": 2,
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "f9725160-4d6f-4b36-81f7-5daeb89aeb9d",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+                "settings": {}
+              }
+            },
+            "3": {
+              "position": {
+                "x": 0,
+                "y": 6,
+                "colSpan": 14,
+                "rowSpan": 1
+              },
+              "metadata": {
+                "inputs": [],
+                "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                "settings": {
+                  "content": {
+                    "settings": {
+                      "content": "<span style=\"color:blue;font-size: 28px;\">Virtual Machines</span>\n",
+                      "title": "",
+                      "subtitle": "",
+                      "markdownSource": 1
+                    }
+                  }
+                }
+              }
+            },
+            "4": {
+              "position": {
+                "x": 0,
+                "y": 7,
+                "colSpan": 2,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Total VMs",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| where type == \"microsoft.compute/virtualmachines\"\r\n| summarize [\"Total VMs\"] = count()",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "e4557a5f-6855-4e91-9be6-e21872d6c4fa",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "5": {
+              "position": {
+                "x": 2,
+                "y": 7,
+                "colSpan": 2,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Linux VMs",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend OS = properties.storageProfile.osDisk.osType\r\n| where type == \"microsoft.compute/virtualmachines\" and \r\n\t\tOS == \"Linux\"\r\n| summarize [\"Linux VM\"] = count()",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "ee54f33e-2dbd-486d-94ae-0b3a2bad796e",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "6": {
+              "position": {
+                "x": 4,
+                "y": 7,
+                "colSpan": 5,
+                "rowSpan": 4
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "VM by Image Type",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| where type == \"microsoft.compute/virtualmachines\"\r\n| extend\r\n\timgOffer = properties.storageProfile.imageReference.offer,\r\n\timgSku = properties.storageProfile.imageReference.sku\r\n| summarize [\"Image Count\"] =count() by tostring(imgOffer), tostring(imgSku)\r\n| project Image = strcat(tostring(imgOffer),\" | \", tostring(imgSku)), [\"Image Count\"]",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "value": 2,
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "2c95f835-8bea-4727-b543-926be48fd5dc",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+                "settings": {}
+              }
+            },
+            "7": {
+              "position": {
+                "x": 9,
+                "y": 7,
+                "colSpan": 5,
+                "rowSpan": 4
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Sum By VM Sku",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| where type == \"microsoft.compute/virtualmachines\"\r\n| extend VMSku = parse_json(properties.hardwareProfile).vmSize\r\n| summarize [\"SKU Count\"]=count() by tostring(VMSku)",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "value": 2,
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "926835a2-bd94-4b6e-86b7-58d22aa81ab4",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+                "settings": {}
+              }
+            },
+            "8": {
+              "position": {
+                "x": 0,
+                "y": 9,
+                "colSpan": 2,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Total Running VMs",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend PowerState = properties.extended.instanceView.powerState.displayStatus\r\n| where type == \"microsoft.compute/virtualmachines\" and PowerState == \"VM running\"\r\n| summarize Count = count()",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "04f045b7-70be-4858-ab00-2ac75b991c47",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "9": {
+              "position": {
+                "x": 2,
+                "y": 9,
+                "colSpan": 2,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Windows VMs",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend OS = properties.storageProfile.osDisk.osType\r\n| where type == \"microsoft.compute/virtualmachines\" and \r\n\t\tOS == \"Windows\"\r\n| summarize [\"Windows VM\"] = count()",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "0b73fd98-1158-43bd-865b-79b98545e666",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "10": {
+              "position": {
+                "x": 0,
+                "y": 11,
+                "colSpan": 2,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "VMs Stopped",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend PowerState = properties.extended.instanceView.powerState.displayStatus\r\n| where type == \"microsoft.compute/virtualmachines\" and PowerState != \"VM running\"\r\n| summarize Count=count()",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "c7db90f3-38c3-4648-913d-0d26ffc218b2",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "11": {
+              "position": {
+                "x": 2,
+                "y": 11,
+                "colSpan": 5,
+                "rowSpan": 3
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "All VMs Running",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend PowerState = properties.extended.instanceView.powerState.displayStatus\r\n| where type == \"microsoft.compute/virtualmachines\" and PowerState == \"VM running\"\r\n| project [\"Resource Group\"] = resourceGroup, Name=name, State=\"Running\"",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "645faf35-d63a-4a52-889a-6c97574c1255",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "value": true,
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {}
+              }
+            },
+            "12": {
+              "position": {
+                "x": 7,
+                "y": 11,
+                "colSpan": 5,
+                "rowSpan": 3
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "All VMs Stopped",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend PowerState = properties.extended.instanceView.powerState.displayStatus\r\n| where type == \"microsoft.compute/virtualmachines\" and PowerState != \"VM running\"\r\n| project [\"Resource Group\"] = resourceGroup, Name=name, State=\"Stopped\"",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "9453f72a-fdf7-453e-a3e8-b9899ab8a363",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "value": true,
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {}
+              }
+            },
+            "13": {
+              "position": {
+                "x": 0,
+                "y": 14,
+                "colSpan": 15,
+                "rowSpan": 1
+              },
+              "metadata": {
+                "inputs": [],
+                "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                "settings": {
+                  "content": {
+                    "settings": {
+                      "content": "<span style=\"color:orange;font-size: 28px;\">Networking</span>\n",
+                      "title": "",
+                      "subtitle": "",
+                      "markdownSource": 1
+                    }
+                  }
+                }
+              }
+            },
+            "14": {
+              "position": {
+                "x": 0,
+                "y": 15,
+                "colSpan": 2,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Total VNets",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| where type == \"microsoft.network/virtualnetworks\"\r\n| summarize VNets = count()\r\n",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "766c8aca-6c10-43ee-804b-6ed24f1db4be",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "15": {
+              "position": {
+                "x": 2,
+                "y": 15,
+                "colSpan": 9,
+                "rowSpan": 5
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "All VNets Subnets",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| where type=='microsoft.network/virtualnetworks'\r\n| extend Subnets = parse_json(properties).subnets\r\n| extend RscIdSplit = split(id, \"/\")\r\n| extend SubscriptionId =  tostring(RscIdSplit[2])\r\n| join kind=inner\r\n\t(ResourceContainers\r\n\t\t| extend SubscriptionName = name\r\n\t\t| where type == \"microsoft.resources/subscriptions\"\r\n\t) on $left.SubscriptionId == $right.subscriptionId\r\n| mvexpand Subnets\r\n| extend NSGRscId = parse_json(Subnets.properties.networkSecurityGroup).id\r\n| extend NSGRscIdSplitArrLen = array_length(split(NSGRscId, \"/\"))\r\n| extend NSGName = iif(NSGRscIdSplitArrLen == 0, \"\", split(NSGRscId, \"/\")[(NSGRscIdSplitArrLen - 1)])\r\n| project SubscriptionName, ResourceGroup = resourceGroup, VNet = name, Subnet = tostring(Subnets.name), NSGName",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "dca794c1-a3b2-4d7f-aa7b-3bcc1b011ccb",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {}
+              }
+            },
+            "16": {
+              "position": {
+                "x": 0,
+                "y": 20,
+                "colSpan": 15,
+                "rowSpan": 1
+              },
+              "metadata": {
+                "inputs": [],
+                "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                "settings": {
+                  "content": {
+                    "settings": {
+                      "content": "<span style=\"color:orange;font-size: 22px;\">Networking - NSG</span>\n",
+                      "title": "",
+                      "subtitle": "",
+                      "markdownSource": 1
+                    }
+                  }
+                }
+              }
+            },
+            "17": {
+              "position": {
+                "x": 0,
+                "y": 21,
+                "colSpan": 2,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "NSG Empty Rules",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend Rules  = parse_json(properties.securityRules)\r\n| where\r\n\ttype == \"microsoft.network/networksecuritygroups\" and \r\n\tarray_length(Rules) == 0\r\n| summarize [\"NSG Empty Rules\"] = count()",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "7726d403-dfe8-4604-8026-39e8223836ea",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "18": {
+              "position": {
+                "x": 2,
+                "y": 21,
+                "colSpan": 3,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "NSG Allow Inbound Any",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend SecurityRules  = parse_json(properties.securityRules)\r\n| extend Rules = SecurityRules\r\n| mvexpand Rules\r\n| extend Access = Rules.properties.access\r\n| extend Direction = Rules.properties.direction\r\n| extend InSrcAddrPrefixes = parse_json(Rules.properties.sourceAddressPrefixes)\r\n| extend InSrcAddrPrefix = Rules.properties.sourceAddressPrefix\r\n| where\r\n\ttype == \"microsoft.network/networksecuritygroups\" and\r\n\tarray_length(SecurityRules) > 0 and\r\n\tAccess =~ \"Allow\" and\r\n\tDirection == \"Inbound\" and \r\n\t( InSrcAddrPrefixes in~ (\"any\", \"*\", \"0.0.0.0/0\") or InSrcAddrPrefix in~ (\"any\", \"*\", \"0.0.0.0/0\") )\r\n| summarize [\"NSG allow Inbound Any\"] = dcount(name)",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "19": {
+              "position": {
+                "x": 5,
+                "y": 21,
+                "colSpan": 10,
+                "rowSpan": 3
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "NSG Allow Inbound Any Details",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend SecurityRules  = parse_json(properties.securityRules)\r\n| extend Rules = SecurityRules\r\n| mvexpand Rules\r\n| extend Direction = Rules.properties.direction\r\n| extend InSrcAddrPrefixes = parse_json(Rules.properties.sourceAddressPrefixes)\r\n| extend InSrcAddrPrefix = Rules.properties.sourceAddressPrefix\r\n| extend RuleName = tostring(Rules.name)\r\n| extend Priority = tostring(Rules.properties.priority)\r\n| extend Access = tostring(Rules.properties.access)\r\n| extend Access = tostring(Rules.properties.access)\r\n| extend Protocol = tostring(Rules.properties.protocol)\r\n\r\n| extend SrcAddrPrefixes =\r\niif(array_length(Rules.properties.sourceAddressPrefixes) == 0, \"\", strcat_array(Rules.properties.sourceAddressPrefixes, \",\"))\r\n| extend SrcAddr = strcat(tostring(Rules.properties.sourceAddressPrefix), SrcAddrPrefixes)\r\n\r\n| extend DestAddrPrefixes =\r\niif(array_length(Rules.properties.destinationAddressPrefixes) == 0, \"\", strcat_array(Rules.properties.destinationAddressPrefixes, \",\"))\r\n| extend DestAddr = strcat(tostring(Rules.properties.destinationAddressPrefix),DestAddrPrefixes)\r\n\r\n| extend DestPortRanges =\r\niif(array_length(Rules.properties.destinationPortRanges) == 0, \"\", strcat_array(Rules.properties.destinationPortRanges, \",\"))\r\n| extend DestPorts = strcat(tostring(Rules.properties.destinationPortRange),DestPortRanges)\r\n\r\n| where\r\n\ttype == \"microsoft.network/networksecuritygroups\" and\r\n\tarray_length(SecurityRules) > 0 and \r\n\tAccess =~ \"Allow\" and\r\n\tDirection == \"Inbound\" and \r\n\t( InSrcAddrPrefixes in~ (\"any\", \"*\", \"0.0.0.0/0\") or InSrcAddrPrefix in~ (\"any\", \"*\", \"0.0.0.0/0\") )\r\n| distinct \r\n\tresourceGroup, name, \r\n\tRuleName,\r\n\tPriority,\r\n\tAccess,\r\n\tProtocol,\r\n\tSrcAddr,\r\n\tDestAddr,\r\n\tDestPorts\r\n| project \r\n\t[\"Resource Group\"] = resourceGroup,\r\n\t[\"NSG Name\"] = name, \r\n\t[\"Rule Name\"] = RuleName,\r\n\tPriority,\r\n\tAccess,\r\n\tProtocol,\r\n\tSrcAddr,\r\n\tDestAddr,\r\n\tDestPorts",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "67c706da-3a22-4695-8e9b-32bfcf835642",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {}
+              }
+            },
+            "20": {
+              "position": {
+                "x": 2,
+                "y": 23,
+                "colSpan": 3,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "NSG Allow Outbound Any",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend SecurityRules  = parse_json(properties.securityRules)\r\n| extend Rules = SecurityRules\r\n| mvexpand Rules\r\n| extend Access = tostring(Rules.properties.access)\r\n| extend Direction = Rules.properties.direction\r\n| extend OutDestAddrPrefixes = parse_json(Rules.properties.destinationAddressPrefixes)\r\n| extend OutDestAddrPrefix = Rules.properties.destinationAddressPrefix\r\n| where\r\n\ttype == \"microsoft.network/networksecuritygroups\" and\r\n\tarray_length(SecurityRules) > 0 and \r\n\tAccess =~ \"Allow\" and\r\n\tDirection == \"Outbound\" and \r\n\t( OutDestAddrPrefixes in~ (\"any\", \"*\", \"0.0.0.0/0\") or OutDestAddrPrefix in~ (\"any\", \"*\", \"0.0.0.0/0\") )\r\n| summarize [\"NSG allow Outbound Any\"] = dcount(name)\r\n\t",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "21": {
+              "position": {
+                "x": 5,
+                "y": 24,
+                "colSpan": 10,
+                "rowSpan": 3
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "NSG Allow Outbound Any Details",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend SecurityRules  = parse_json(properties.securityRules)\r\n| extend Rules = SecurityRules\r\n| mvexpand Rules\r\n| extend Direction = Rules.properties.direction\r\n| extend OutDestAddrPrefixes = parse_json(Rules.properties.destinationAddressPrefixes)\r\n| extend OutDestAddrPrefix = Rules.properties.destinationAddressPrefix\r\n| extend RuleName = tostring(Rules.name)\r\n| extend Priority = tostring(Rules.properties.priority)\r\n| extend Access = tostring(Rules.properties.access)\r\n| extend Access = tostring(Rules.properties.access)\r\n| extend Protocol = tostring(Rules.properties.protocol)\r\n\r\n| extend SrcAddrPrefixes =\r\niif(array_length(Rules.properties.sourceAddressPrefixes) == 0, \"\", strcat_array(Rules.properties.sourceAddressPrefixes, \",\"))\r\n| extend SrcAddr = strcat(tostring(Rules.properties.sourceAddressPrefix), SrcAddrPrefixes)\r\n\r\n| extend DestAddrPrefixes =\r\niif(array_length(Rules.properties.destinationAddressPrefixes) == 0, \"\", strcat_array(Rules.properties.destinationAddressPrefixes, \",\"))\r\n| extend DestAddr = strcat(tostring(Rules.properties.destinationAddressPrefix),DestAddrPrefixes)\r\n\r\n| extend DestPortRanges =\r\niif(array_length(Rules.properties.destinationPortRanges) == 0, \"\", strcat_array(Rules.properties.destinationPortRanges, \",\"))\r\n| extend DestPorts = strcat(tostring(Rules.properties.destinationPortRange),DestPortRanges)\r\n\r\n| where\r\n\ttype == \"microsoft.network/networksecuritygroups\" and\r\n\tarray_length(SecurityRules) > 0 and \r\n\tAccess =~ \"Allow\" and\r\n\tDirection == \"Outbound\" and \r\n\t( OutDestAddrPrefixes in~ (\"any\", \"*\", \"0.0.0.0/0\") or OutDestAddrPrefix in~ (\"any\", \"*\", \"0.0.0.0/0\") )\r\n| distinct \r\n\tresourceGroup, name, \r\n\tRuleName,\r\n\tPriority,\r\n\tAccess,\r\n\tProtocol,\r\n\tSrcAddr,\r\n\tDestAddr,\r\n\tDestPorts\r\n| project \r\n\t[\"Resource Group\"] = resourceGroup,\r\n\t[\"NSG Name\"] = name, \r\n\t[\"Rule Name\"] = RuleName,\r\n\tPriority,\r\n\tAccess,\r\n\tProtocol,\r\n\tSrcAddr,\r\n\tDestAddr,\r\n\tDestPorts",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {}
+              }
+            },
+            "22": {
+              "position": {
+                "x": 0,
+                "y": 25,
+                "colSpan": 5,
+                "rowSpan": 4
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Count of Subnets Without NSG",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "value": 2,
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| where type=='microsoft.network/virtualnetworks'\r\n| extend Subnets = parse_json(properties).subnets\r\n| extend RscIdSplit = split(id, \"/\")\r\n| extend SubscriptionId =  tostring(RscIdSplit[2])\r\n\r\n| mvexpand Subnets\r\n| where isnull(Subnets.properties.networkSecurityGroup) and\r\n\tSubnets.name !in~ (\"AzureFirewallSubnet\", \"GateWaySubnet\")\r\n| summarize Count=dcount(tostring(Subnets.name)) by ResourceGroup = resourceGroup, VNet = name",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryChartTile",
+                "settings": {}
+              }
+            },
+            "23": {
+              "position": {
+                "x": 0,
+                "y": 29,
+                "colSpan": 15,
+                "rowSpan": 1
+              },
+              "metadata": {
+                "inputs": [],
+                "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                "settings": {
+                  "content": {
+                    "settings": {
+                      "content": "<span style=\"color:orange;font-size: 22px;\">Networking - Public IP</span>\n",
+                      "title": "",
+                      "subtitle": "",
+                      "markdownSource": 1
+                    }
+                  }
+                }
+              }
+            },
+            "24": {
+              "position": {
+                "x": 0,
+                "y": 30,
+                "colSpan": 2,
+                "rowSpan": 2
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Total Public IP",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| where type == \"microsoft.network/publicipaddresses\"\r\n| summarize [\"Public IPs\"] = count()",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "8521c8bd-f39b-4ad0-ab65-dbb3c9c71510",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "value": true,
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
+                "settings": {}
+              }
+            },
+            "25": {
+              "position": {
+                "x": 2,
+                "y": 30,
+                "colSpan": 8,
+                "rowSpan": 4
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Resources with Public IP",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "value": true,
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend Props = properties\r\n| extend IPConfig = tostring(Props.ipConfiguration.id)\r\n| extend PIPSku = parse_json(sku).name\r\n| extend IPConfigRsc = split(IPConfig, \"/*/\")\r\n| extend SplittedArrLength = array_length(IPConfigRsc)\r\n| parse IPConfig with * \"/Microsoft.\" ResourceProvider \"/\" ResourceType \"/\" Resource\r\n//| extend AttachedResourceType = strcat(IPConfigRsc[(SplittedArrLength-5)],\"/\", IPConfigRsc[(SplittedArrLength-4)])\r\n//| extend AttachedResource = IPConfigRsc[(SplittedArrLength - 1)]\r\n| where type == \"microsoft.network/publicipaddresses\" and \r\n\t\tisnotnull(Props.ipConfiguration)\r\n| project\r\n\t[\"ResourceGroup\"] = resourceGroup,\r\n\t[\"Resource Type\"]=ResourceType, \r\n\t[\"Resource\"]=Resource,\r\n\t[\"PIP Name\"]=name, \r\n\t[\"PIP\"]=properties.ipAddress",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {}
+              }
+            },
+            "26": {
+              "position": {
+                "x": 10,
+                "y": 30,
+                "colSpan": 4,
+                "rowSpan": 4
+              },
+              "metadata": {
+                "inputs": [
+                  {
+                    "name": "partTitle",
+                    "value": "Public IP Not Associated",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "query",
+                    "value": "Resources\r\n| extend Props = properties\r\n| where type == \"microsoft.network/publicipaddresses\" and \r\n\t\tisnull(Props.ipConfiguration)\r\n| project\r\n\t[\"ResourceGroup\"] = resourceGroup,\r\n\tName=name",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "chartType",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "isShared",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "queryId",
+                    "value": "d9517e3e-e956-4b39-a2b8-3ab0494cab27",
+                    "isOptional": true
+                  },
+                  {
+                    "name": "formatResults",
+                    "isOptional": true
+                  }
+                ],
+                "type": "Extension/HubsExtension/PartType/ArgQueryGridTile",
+                "settings": {}
+              }
+            }
+          }
+        }
+      },
+      "metadata": {
+        "model": {
+          "timeRange": {
+            "value": {
+              "relative": {
+                "duration": 24,
+                "timeUnit": 1
+              }
+            },
+            "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+          }
+        }
+      }
+    },
+    "name": "Inventory",
+    "type": "Microsoft.Portal/dashboards",
+    "location": "SoutheastAsia",
+    "tags": {
+      "hidden-title": "Inventory"
+    },
+    "apiVersion": "2015-08-01-preview"
+  }
