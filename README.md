@@ -32,6 +32,6 @@ Azure App Service (Serverless computing)
 3. You can quickly deploy your website by using this service
 
 <img src="https://user-images.githubusercontent.com/54704393/125024150-d195fb80-e0b2-11eb-934a-e0e84502cb64.png" width="700">
-### Microsoft Azure services used
 
+### Microsoft Azure services used
 Azure Network interface, Azure public IP, Azure Vnet, Azure VM set, Azure subnet, Azure RG, Azure LB
