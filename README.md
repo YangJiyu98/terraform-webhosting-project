@@ -25,6 +25,7 @@ IaaS
 3. Use load balancer to distribute inbound traffic
 4. Use security group rules to ensure network security
 <img src="https://user-images.githubusercontent.com/54704393/125024282-07d37b00-e0b3-11eb-9d64-f349de6327b9.png" width="550">
+
 Azure App Service (Serverless computing)
 1. Is fully managed by Azure
 2. Simplify operations with automatic platform maintenance and security patching
