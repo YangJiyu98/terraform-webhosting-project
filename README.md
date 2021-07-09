@@ -24,13 +24,12 @@ IaaS
 2. Create backup for important component to ensure high availability
 3. Use load balancer to distribute inbound traffic
 4. Use security group rules to ensure network security
-![image](https://user-images.githubusercontent.com/54704393/125024282-07d37b00-e0b3-11eb-9d64-f349de6327b9.png)
-
+<img src="https://user-images.githubusercontent.com/54704393/125024282-07d37b00-e0b3-11eb-9d64-f349de6327b9.png" width="550">
 Azure App Service (Serverless computing)
-1.Is fully managed by Azure
-2.Simplify operations with automatic platform maintenance and security patching
-3.You can quickly deploy your website by using this service
-![image](https://user-images.githubusercontent.com/54704393/125024150-d195fb80-e0b2-11eb-934a-e0e84502cb64.png)
+1. Is fully managed by Azure
+2. Simplify operations with automatic platform maintenance and security patching
+3. You can quickly deploy your website by using this service
 
+<img src="https://user-images.githubusercontent.com/54704393/125024150-d195fb80-e0b2-11eb-934a-e0e84502cb64.png" width="700">
 ### Microsoft Azure services used
 Azure Network interface, Azure public IP, Azure Vnet, Azure VM set, Azure subnet, Azure RG, Azure LB
