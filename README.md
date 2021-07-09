@@ -19,14 +19,14 @@ Terraform-webhosting-project aims to create a website using Terraform and Micros
 6. Run ``` terraform apply ``` to apply the changes onto your configuration files
 
 ### Thought process
-IaaS 
+IaaS approach
 1. Assume everything will fail
 2. Create backup for important component to ensure high availability
 3. Use load balancer to distribute inbound traffic
 4. Use security group rules to ensure network security
 <img src="https://user-images.githubusercontent.com/54704393/125024282-07d37b00-e0b3-11eb-9d64-f349de6327b9.png" width="550">
 
-Azure App Service (Serverless computing)
+Azure App Service approach (Serverless computing)
 1. Is fully managed by Azure
 2. Simplify operations with automatic platform maintenance and security patching
 3. You can quickly deploy your website by using this service
