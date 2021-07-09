@@ -24,7 +24,7 @@ IaaS approach
 2. Create backup for important component to ensure high availability
 3. Use load balancer to distribute inbound traffic
 4. Use security group rules to ensure network security
-<img src="https://user-images.githubusercontent.com/54704393/125024282-07d37b00-e0b3-11eb-9d64-f349de6327b9.png" width="550">
+<img src="https://user-images.githubusercontent.com/54704393/125039220-d49be680-e0c8-11eb-8598-3c2c6c591519.png" width="550">
 
 Azure App Service approach (Serverless computing)
 1. Is fully managed by Azure
